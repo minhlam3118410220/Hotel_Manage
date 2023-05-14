@@ -58,7 +58,7 @@ Many more....
 8. run command[create database data]:```php artisan db:seed```
 9. ```npm install```
 10. ```npm run watch```
-11. run command[laravel file manager]:-  ```php artisan storage:link```
+11. run command[laravel image storage]:-  ```php artisan storage:link```
 12. Edit ```.env``` file :- remove APP_URL
 13. ```php artisan serve``` or use virtual host
 14. Visit ```localhost:8000``` in your browser
