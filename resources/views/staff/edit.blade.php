@@ -39,7 +39,7 @@
                                             <td>
                                                 <input name="photo" type="file" />
                                                 <input type="hidden" value="{{$data->photo}}" name="prev_photo" />
-                                                <img width="80" src="{{asset('storage/'.str_replace('public/', '',$data->photo))}}" />
+                                                <img width="80" src="{{$data->photo}}" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -59,7 +59,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <input type="submit" class="btn btn-primary" />
+                                                <input type="submit" class="btn btn-primary" value="Update"/>
                                             </td> 
                                         </tr>
                                     </table>

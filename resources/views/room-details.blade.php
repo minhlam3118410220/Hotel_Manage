@@ -30,7 +30,7 @@
                         @foreach($roomTypes->roomtypeimgs as $key => $img)
                       
                             <div class="ts-item">
-                                <img src="{{asset('storage/'.str_replace('public/', '',$img->img_src)) }}" alt="">
+                                <img src="{{$img->img_src }}" alt="">
                             </div>          
 
                         @endforeach
@@ -135,7 +135,7 @@
                     <div class="room-item"> 
                     @foreach($rtype->roomtypeimgs as $key => $img)
                         @if($key == 0) 
-                        <img src="{{asset('storage/'.str_replace('public/', '',$img->img_src)) }}" alt="">               
+                        <img src="{{$img->img_src }}" alt="">               
                         @endif
                     @endforeach
                         <div class="ri-text">

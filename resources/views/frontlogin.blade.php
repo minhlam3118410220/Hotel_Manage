@@ -26,10 +26,7 @@
                                 <div class="form-group ">
                                     <input type="hidden" name="ref" value="front" />
                                     <input type="submit" class="btn btn-primary btn-user btn-block" value="Login" >
-                                </div>
-                                
-                        
-                                
+                                </div>               
                             </form>
                             <hr>
                             <div class="text-center">

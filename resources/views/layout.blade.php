@@ -36,7 +36,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @if (session('adminData')->first()->level == 1)
+        {{-- @if (session('adminData')->first()->level == 1) --}}
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Dashboard -->
@@ -230,11 +230,11 @@
             </div>
 
         </ul>
-        @endif
+        {{-- @endif --}}
         <!-- End of Sidebar -->
 
         <!-- Sidebar -->
-        @if (session('adminData')->first()->level == 2)
+        {{-- @if (session('adminData')->first()->level == 2)
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Dashboard -->
@@ -388,10 +388,10 @@
             </div>
 
         </ul>
-        @endif
+        @endif --}}
         <!-- End of Sidebar -->
 
-        @if (session('adminData')->first()->level == 3)
+        {{-- @if (session('adminData')->first()->level == 3)
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Dashboard -->
@@ -508,7 +508,7 @@
             </div>
 
         </ul>
-        @endif
+        @endif --}}
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->

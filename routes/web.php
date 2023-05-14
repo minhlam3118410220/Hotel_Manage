@@ -98,6 +98,10 @@ Route::get('logout',[CustomerController::class,'logout']);
 Route::get('customer/add-testimonial',[HomeController::class,'add_testimonial']);
 Route::post('customer/save-testimonial',[HomeController::class,'save_testimonial']);
 
+//Profile 
+Route::get('customer/{id}',[PageController::class,'customer']);
+Route::post('customer/{id}',[PageController::class,'edit_customer']);
+
 
 
 

@@ -34,7 +34,10 @@ class CustomerController extends Controller
         ]);
 
         if($request->hasFile('photo')){
-            $imgPath=$request->file('photo')->store('public/imgs');
+            // $imgPath=$request->file('photo')->store('public/imgs');
+            $fileName = $request->file('photo')->getClientOriginalName();
+            $request->file('photo')->move(public_path('img'), $fileName);
+            $imgPath = 'img/' . basename($fileName);        
         }else{
             $imgPath=null;
         }
@@ -79,7 +82,10 @@ class CustomerController extends Controller
         ]);
 
         if($request->hasFile('photo')){
-            $imgPath=$request->file('photo')->store('public/imgs');
+            // $imgPath=$request->file('photo')->store('public/imgs');
+            $fileName = $request->file('photo')->getClientOriginalName();
+            $request->file('photo')->move(public_path('img'), $fileName);
+            $imgPath = 'img/' . basename($fileName); 
         }else{
             $imgPath=$request->prev_photo;
         }
@@ -119,8 +125,9 @@ class CustomerController extends Controller
 
         if($detail>0){
             $detail=Customer::where(['email'=>$email,'password'=>$pwd])->get();
-          
+            
             session(['customerlogin'=>true,'data'=>$detail]);
+  
             return redirect('/');
         }else{
             return redirect('login')->with('error','Invalid Email/Password!!');

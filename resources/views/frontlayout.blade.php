@@ -140,14 +140,14 @@
                                     <li><a href="{{url('about-us')}}">About Us</a></li>
                                     <li><a href="{{url('blog')}}">Blogs</a></li>
                                     <li><a href="{{url('contact')}}">Contact</a></li>   
-                                    {{-- <li><a href="./pages.html">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="./room-details.html">Room Details</a></li>
-                                            <li><a href="./blog-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li> --}}
+                                    
                                     @if (Session::has('customerlogin'))
-                                    <li><a href="{{url('customer/add-testimonial')}}">Testimonial</a></li>
+                                    <li><a href="">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{{url('customer/'.session('data')[0]->id)}}">Profile</a></li>
+                                            <li><a href="{{url('customer/add-testimonial')}}">Testimonial</a></li>
+                                        </ul>
+                                    </li>
                                     @endif
                                     
                                     

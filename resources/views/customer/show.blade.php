@@ -19,8 +19,7 @@
                                     </tr>
                                     <tr>
                                         <th>Photo</th>
-                                        
-                                        <td><img width="100" height="100" src="{{ asset('storage/'.str_replace('public/', '',$data->photo)) }}" /></td>
+                                        <td><img width="100" height="100" src="{{$data->photo}}" /></td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>

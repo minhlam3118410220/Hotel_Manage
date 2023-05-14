@@ -31,7 +31,7 @@
                                             <td>
                                                 <input name="banner_src" type="file" />
                                                 <input type="hidden" name="prev_photo" value="{{$data->banner_src}}" />
-                                                <img width="100" src="{{asset('storage/' .str_replace('public/', '',$data->banner_src))}}" />
+                                                <img width="100" src="{{$data->banner_src}}" />
                                                
                                             </td>
                                         </tr>
@@ -45,7 +45,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <input type="submit" class="btn btn-primary" />
+                                                <input type="submit" class="btn btn-primary" value="Update"/>
                                             </td> 
                                         </tr>
                                     </table>

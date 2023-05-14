@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -64,5 +65,39 @@ class PageController extends Controller
         
 
         return view('room-details',['roomTypes'=>$roomTypes,'related_roomtypes'=>$related_roomtypes]);
+    }
+
+    public function customer($id)
+    {
+        $data=Customer::find($id);
+   
+        return view('customer.profile',['data'=>$data]);
+        
+    }
+
+    public function edit_customer(Request $request, $id)
+    {
+        $request->validate([
+            'full_name'=>'required',
+            'email'=>'required|email',
+            'mobile'=>'required',
+        ]);
+
+        if($request->hasFile('photo')){
+            $fileName = $request->file('photo')->getClientOriginalName();
+            $request->file('photo')->move(public_path('img'), $fileName);
+            $imgPath = 'img/' . basename($fileName);
+        }else{
+            $imgPath=$request->prev_photo;
+        }
+        
+        $data=Customer::find($id);
+        $data->full_name=$request->full_name;
+        $data->email=$request->email;
+        $data->mobile=$request->mobile;
+        $data->photo=$imgPath;
+        $data->save();
+
+        return redirect()->back();
     }
 }

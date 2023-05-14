@@ -18,7 +18,7 @@
         </div>
         <div class="hero-slider owl-carousel">
             @foreach ($banners as $banner)
-                <div class="hs-item set-bg" data-setbg="{{asset('storage/' .str_replace('public/', '',$banner->banner_src))}}"></div>
+                <div class="hs-item set-bg" data-setbg="{{$banner->banner_src}}"></div>
             @endforeach
           
         </div>
@@ -98,7 +98,7 @@
                     <div class="col-lg-3 col-md-6">
                         @foreach($rtype->roomtypeimgs as $index => $img)
                         		@if($index == 0)
-                                <div class="hp-room-item set-bg" data-setbg="{{asset('storage/'.str_replace('public/', '',$img->img_src)) }}">  
+                                <div class="hp-room-item set-bg" data-setbg="{{$img->img_src }}">  
                         		@endif
                         @endforeach
                             <div class="hr-text">

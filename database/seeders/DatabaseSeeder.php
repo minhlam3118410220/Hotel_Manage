@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+use function Ramsey\Uuid\v1;
+
 class DatabaseSeeder extends Seeder
 {
 
@@ -16,15 +18,45 @@ class DatabaseSeeder extends Seeder
             [
                 "id" => 1,
                 "username" => "admin",
-                "password" => sha1('123456')
-            ],          
+                "password" => sha1('123456'),
+                "level"=> 1
+            ],
+            [
+                "id" => 2,
+                "username" => "manage",
+                "password" => sha1('123456'),
+                "level"=> 2
+            ],
+            [
+                "id" => 3,
+                "username" => "admin",
+                "password" => sha1('123456'),
+                "level"=> 3
+            ]          
         ]);
 
         DB::table('room_types')->insert([
             [
                 "id" => 1,
                 "title" => "Deluxe Double Room",
-                "detail" => null,
+                "detail" => "<table><tbody>
+                    <tr>
+                        <td>Size:</td>
+                        <td>30 ft</td>
+                    </tr>
+                    <tr>
+                        <td>Capacity:</td>
+                        <td>Max persion 5</td>
+                    </tr>
+                    <tr>
+                        <td>Bed:</td>
+                        <td>King Beds</td>
+                    </tr>
+                    <tr>
+                        <td>Services:</td>
+                        <td>Wifi, Television, Bathroom,...</td>
+                    </tr>
+                </tbody></table>",
                 "price" => "3326400",
                 "created_at" => "2023-04-18 03:56:41",
                 "updated_at" => "2023-04-22 07:37:45"
@@ -32,7 +64,24 @@ class DatabaseSeeder extends Seeder
             [
                 "id" => 2,
                 "title" => "Premium King Room",
-                "detail" => null,
+                "detail" => "<table><tbody>
+                    <tr>
+                        <td>Size:</td>
+                        <td>30 ft</td>
+                    </tr>
+                    <tr>
+                        <td>Capacity:</td>
+                        <td>Max persion 5</td>
+                    </tr>
+                    <tr>
+                        <td>Bed:</td>
+                        <td>King Beds</td>
+                    </tr>
+                    <tr>
+                        <td>Services:</td>
+                        <td>Wifi, Television, Bathroom,...</td>
+                    </tr>
+                </tbody></table>",
                 "price" => "3719100",
                 "created_at" => "2023-04-18 04:12:14",
                 "updated_at" => "2023-04-22 07:38:11"
@@ -40,7 +89,24 @@ class DatabaseSeeder extends Seeder
             [
                 "id" => 3,
                 "title" => "Premium Twin Room",
-                "detail" => null,
+                "detail" => "<table><tbody>
+                    <tr>
+                        <td>Size:</td>
+                        <td>30 ft</td>
+                    </tr>
+                    <tr>
+                        <td>Capacity:</td>
+                        <td>Max persion 5</td>
+                    </tr>
+                    <tr>
+                        <td>Bed:</td>
+                        <td>King Beds</td>
+                    </tr>
+                    <tr>
+                        <td>Services:</td>
+                        <td>Wifi, Television, Bathroom,...</td>
+                    </tr>
+                </tbody></table>",
                 "price" => "3719100",
                 "created_at" => "2023-04-18 04:12:56",
                 "updated_at" => "2023-04-22 07:41:00",
@@ -48,7 +114,24 @@ class DatabaseSeeder extends Seeder
             [
                 "id" => 4,
                 "title" => "Junior Suite",
-                "detail" => null,
+                "detail" => "<table><tbody>
+                    <tr>
+                        <td>Size:</td>
+                        <td>30 ft</td>
+                    </tr>
+                    <tr>
+                        <td>Capacity:</td>
+                        <td>Max persion 5</td>
+                    </tr>
+                    <tr>
+                        <td>Bed:</td>
+                        <td>King Beds</td>
+                    </tr>
+                    <tr>
+                        <td>Services:</td>
+                        <td>Wifi, Television, Bathroom,...</td>
+                    </tr>
+                </tbody></table>",
                 "price" => "6050000",
                 "created_at" => "2023-04-18 03:56:41",
                 "updated_at" => "2023-04-22 07:37:45"
@@ -56,7 +139,24 @@ class DatabaseSeeder extends Seeder
             [
                 "id" => 5,
                 "title" => "Premium Club King",
-                "detail" => null,
+                "detail" => "<table><tbody>
+                    <tr>
+                        <td>Size:</td>
+                        <td>30 ft</td>
+                    </tr>
+                    <tr>
+                        <td>Capacity:</td>
+                        <td>Max persion 5</td>
+                    </tr>
+                    <tr>
+                        <td>Bed:</td>
+                        <td>King Beds</td>
+                    </tr>
+                    <tr>
+                        <td>Services:</td>
+                        <td>Wifi, Television, Bathroom,...</td>
+                    </tr>
+                </tbody></table>",
                 "price" => "5705700",
                 "created_at" => "2023-04-18 03:56:41",
                 "updated_at" => "2023-04-22 07:37:45"
@@ -64,7 +164,24 @@ class DatabaseSeeder extends Seeder
             [
                 "id" => 6,
                 "title" => "Sona Suite",
-                "detail" => null,
+                "detail" => "<table><tbody>
+                    <tr>
+                        <td>Size:</td>
+                        <td>30 ft</td>
+                    </tr>
+                    <tr>
+                        <td>Capacity:</td>
+                        <td>Max persion 5</td>
+                    </tr>
+                    <tr>
+                        <td>Bed:</td>
+                        <td>King Beds</td>
+                    </tr>
+                    <tr>
+                        <td>Services:</td>
+                        <td>Wifi, Television, Bathroom,...</td>
+                    </tr>
+                </tbody></table>",
                 "price" => "6780000",
                 "created_at" => "2023-04-18 03:56:41",
                 "updated_at" => "2023-04-22 07:37:45"
@@ -125,7 +242,7 @@ class DatabaseSeeder extends Seeder
                 "email" => "steveroger@gmail.com",
                 "password" =>  sha1('123456'),
                 "mobile" => "0931321812",
-                "photo" => null,
+                "photo" => "img/cus-01.jpg",
                 "created_at" => "2023-04-18 09:20:31",
                 "updated_at" => "2023-04-18 09:37:54"
             ],
@@ -224,7 +341,7 @@ class DatabaseSeeder extends Seeder
                 "id" => 1,
                 "full_name" => "Bruce Wayne",
                 "department_id" => 1,
-                "photo" => null,
+                "photo" => "img/prod-01.jpg",
                 "bio" => "Detail",
                 "salary_type" => "monthly",
                 "salary_amt" => "40000000",
@@ -235,7 +352,7 @@ class DatabaseSeeder extends Seeder
                 "id" => 2,
                 "full_name" => "Diana Price",
                 "department_id" => 2,
-                "photo" => null,
+                "photo" => "img/prod-02.jpg",
                 "bio" => "Detail",
                 "salary_type" => "monthly",
                 "salary_amt" => "15000000",
@@ -246,7 +363,7 @@ class DatabaseSeeder extends Seeder
                 "id" => 3,
                 "full_name" => "Barry Allen",
                 "department_id" => 5,
-                "photo" => null,
+                "photo" => "img/prod-03.jpg",
                 "bio" => "Detail",
                 "salary_type" => "monthly",
                 "salary_amt" => "7000000",
@@ -413,9 +530,9 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 "id" => 4,
-                "title" => "Sky Executive Lounge",
-                "small_desc" => "flaticon-012-cocktail",
-                "detail_desc" => "Located on the 14th floor, Mai's Sky Executive Lounge is a private area offering exclusive privileges and services for guests staying in our Premium Club and Suite. This tranquil space will give you a chance to escape from the bustling Saigon, admire the landscape of our city, and enjoy a fragrant cup of tea simultaneously.",
+                "title" => "Breakfast Buffet",
+                "small_desc" => "flaticon-002-breakfast",
+                "detail_desc" => "A great breakfast buffet with many dishes, drinks and desserts.There will be many options for you from Asian to European food.",
                 "photo" => null,
                 "created_at" => "2023-04-21 07:07:57",
                 "updated_at" => "2023-04-22 03:12:58"
@@ -460,7 +577,7 @@ class DatabaseSeeder extends Seeder
         DB::table('banners')->insert([
             [
                 "id" => 1,
-                "banner_src" => null,
+                "banner_src" => "img/banner-1.jpg",
                 "alt_text" => "Banner 1",
                 "publish_status" => "on",
                 "created_at" => "2023-04-21 15:14:37",
@@ -468,7 +585,7 @@ class DatabaseSeeder extends Seeder
             ],
              [
                 "id" => 2,
-                "banner_src" => null,
+                "banner_src" => "img/banner-2.jpg",
                 "alt_text" => "Banner 2",
                 "publish_status" => "on",
                 "created_at" => "2023-04-21 15:21:44",
@@ -476,7 +593,7 @@ class DatabaseSeeder extends Seeder
             ],   
             [
                 "id" => 3,
-                "banner_src" => null,
+                "banner_src" => "img/banner-3.jpg",
                 "alt_text" => "Banner 3",
                 "publish_status" => "on",
                 "created_at" => "2023-04-21 15:21:54",
@@ -489,7 +606,143 @@ class DatabaseSeeder extends Seeder
             [
                 "id" => 1,
                 "room_type_id" => 1,
-                "img_src" => null,
+                "img_src" => "img/roomt-1.1.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 2,
+                "room_type_id" => 1,
+                "img_src" => "img/roomt-1.2.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 3,
+                "room_type_id" => 1,
+                "img_src" => "img/roomt-1.3.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 4,
+                "room_type_id" => 2,
+                "img_src" => "img/roomt-2.1.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 5,
+                "room_type_id" => 2,
+                "img_src" => "img/roomt-2.2.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 6,
+                "room_type_id" => 2,
+                "img_src" => "img/roomt-2.3.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 7,
+                "room_type_id" => 3,
+                "img_src" => "img/roomt-3.1.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 8,
+                "room_type_id" => 3,
+                "img_src" => "img/roomt-3.2.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 9,
+                "room_type_id" => 3,
+                "img_src" => "img/roomt-3.3.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 10,
+                "room_type_id" => 4,
+                "img_src" => "img/roomt-4.1.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 11,
+                "room_type_id" => 4,
+                "img_src" => "img/roomt-4.2.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 12,
+                "room_type_id" => 4,
+                "img_src" => "img/roomt-4.3.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 13,
+                "room_type_id" => 5,
+                "img_src" => "img/roomt-5.1.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 14,
+                "room_type_id" => 5,
+                "img_src" => "img/roomt-5.2.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 15,
+                "room_type_id" => 5,
+                "img_src" => "img/roomt-5.3.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 16,
+                "room_type_id" => 6,
+                "img_src" => "img/roomt-6.1.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 17,
+                "room_type_id" => 6,
+                "img_src" => "img/roomt-6.2.jpg",
+                "img_alt" => null,
+                "created_at" => "2023-04-21 15:14:37",
+                "updated_at" => "2023-04-22 02:17:37"
+            ],
+            [
+                "id" => 18,
+                "room_type_id" => 6,
+                "img_src" => "img/roomt-6.3.jpg",
                 "img_alt" => null,
                 "created_at" => "2023-04-21 15:14:37",
                 "updated_at" => "2023-04-22 02:17:37"

@@ -31,7 +31,7 @@
                                             <tr>
                                                 <td>{{$d->id}}</td>
                                                 <td>{{$d->full_name}}</td>
-                                                <td><img width="80" src="{{asset('storage/'.str_replace('public/', '',$d->photo))}}" /></td>
+                                                <td><img width="80" src="{{$d->photo}}" /></td>
                                                 <td>{{$d->department->title}}</td>
                                                 <td>
                                                     <a href="{{url('admin/staff/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>

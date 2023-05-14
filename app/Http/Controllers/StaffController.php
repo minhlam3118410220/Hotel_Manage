@@ -25,7 +25,10 @@ class StaffController extends Controller
     {
         $data= new Staff();
 
-        $imgPath=$request->file('photo')->store('public/imgs');
+ 
+        $fileName = $request->file('photo')->getClientOriginalName();
+        $request->file('photo')->move(public_path('img'), $fileName);
+        $imgPath = 'img/' . basename($fileName); 
 
         $data->full_name=$request->full_name;
         $data->department_id=$request->department_id;
@@ -56,7 +59,10 @@ class StaffController extends Controller
         $data=Staff::find($id);
 
         if($request->hasFile('photo')){
-            $imgPath=$request->file('photo')->store('public/imgs');
+
+            $fileName = $request->file('photo')->getClientOriginalName();
+            $request->file('photo')->move(public_path('img'), $fileName);
+            $imgPath = 'img/' . basename($fileName); 
         }else{
             $imgPath=$request->prev_photo;
         }

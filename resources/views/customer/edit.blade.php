@@ -43,7 +43,8 @@
                                             <td>
                                                 <input name="photo" type="file" />
                                                 <input type="hidden" name="prev_photo" value="{{$data->photo}}" />
-                                                <img width="100" height="100" src="{{ asset('storage/'.str_replace('public/', '',$data->photo)) }}" />
+                                                {{-- <img width="100" height="100" src="{{ asset('storage/'.str_replace('public/', '',$data->photo)) }}" /> --}}
+                                                <img width="100" height="100" src="{{ $data->photo }}" />
                                                 
                                             </td>
                                         </tr>

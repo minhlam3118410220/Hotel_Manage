@@ -27,7 +27,10 @@ class BannerController extends Controller
         ]);
 
         if($request->hasFile('banner_src')){
-            $imgPath=$request->file('banner_src')->store('public/imgs');
+            // $imgPath=$request->file('banner_src')->store('public/imgs');
+            $fileName = $request->file('banner_src')->getClientOriginalName();
+            $request->file('banner_src')->move(public_path('img'), $fileName);
+            $imgPath = 'img/' . basename($fileName); 
         }else{
             $imgPath=null;
         }
@@ -56,12 +59,15 @@ class BannerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'prev_photo'=>'required',
+           
             'alt_text'=>'required',
         ]);
 
         if($request->hasFile('banner_src')){
-            $imgPath=$request->file('banner_src')->store('public/imgs');
+            // $imgPath=$request->file('banner_src')->store('public/imgs');
+            $fileName = $request->file('banner_src')->getClientOriginalName();
+            $request->file('banner_src')->move(public_path('img'), $fileName);
+            $imgPath = 'img/' . basename($fileName); 
         }else{
             $imgPath=$request->prev_photo;
         }

@@ -38,7 +38,10 @@ class RoomTypeController extends Controller
         $data->save();
 
             foreach($request->file('imgs') as $img){
-                $imgPath=$img->store('public/imgs');
+                // $imgPath=$img->store('public/imgs');
+                $fileName = $img->getClientOriginalName();
+                $img->move(public_path('img'), $fileName);
+                $imgPath = 'img/' . basename($fileName); 
                 $imgData= new RoomTypeImage();
                 $imgData->room_type_id = $data->id;
                 $imgData->img_src = $imgPath;
@@ -75,7 +78,10 @@ class RoomTypeController extends Controller
     
         if($request->hasFile('imgs')){
             foreach($request->file('imgs') as $img){
-                $imgPath=$img->store('public/imgs');
+                // $imgPath=$img->store('public/imgs');
+                $fileName = $img->getClientOriginalName();
+                $img->move(public_path('img'), $fileName);
+                $imgPath = 'img/' . basename($fileName); 
                 $imgData=new RoomTypeImage();
                 $imgData->room_type_id=$data->id;
                 $imgData->img_src=$imgPath;
