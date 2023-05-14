@@ -22,6 +22,7 @@ class CreateBookingsTable extends Migration
             $table->string('total_adults');
             $table->string('total_children');
             $table->string('ref');
+            $table->string('total')->nullable();
             $table->timestamps();
         });
     }

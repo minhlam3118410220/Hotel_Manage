@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\RoomType;
 use App\Models\RoomTypeImage;
 use Illuminate\Http\Request;

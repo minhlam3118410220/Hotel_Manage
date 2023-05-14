@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Customer;
+use App\Models\Room;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -33,38 +35,6 @@ class BookingController extends Controller
             'roomprice'=>'required',
         ]);
         
-
-        // if($request->ref=='front'){
-        //     $sessionData=[
-        //         'customer_id'=>$request->customer_id,
-        //         'room_id'=>$request->room_id,
-        //         'checkin_date'=>$request->checkin_date,
-        //         'checkout_date'=>$request->checkout_date,
-        //         'total_adults'=>$request->total_adults,
-        //         'total_children'=>$request->total_children,
-        //         'roomprice'=>$request->roomprice,
-        //         'ref'=>$request->ref
-        //     ];
-        //     session($sessionData);
-        //     \Stripe\Stripe::setApiKey('sk_test_51JKcB7SFjUWoS3CIIaPlxPSREpJYoyPsn5KIhj2CBCM9z23dRUreOUwFq6eXmRYmgXNfxSozplocikiAFe3aX7sK008OH0sqy6');
-        //     $session = \Stripe\Checkout\Session::create([
-        //         'payment_method_types' => ['card'],
-        //         'line_items' => [[
-        //           'price_data' => [
-        //             'currency' => 'inr',
-        //             'product_data' => [
-        //               'name' => 'T-shirt',
-        //             ],
-        //             'unit_amount' => $request->roomprice*100,
-        //           ],
-        //           'quantity' => 1,
-        //         ]],
-        //         'mode' => 'payment',
-        //         'success_url' => 'http://localhost/laravel-apps/hotelManage/booking/success?session_id={CHECKOUT_SESSION_ID}',
-        //         'cancel_url' => 'http://localhost/laravel-apps/hotelManage/booking/fail',
-        //     ]);
-        //     return redirect($session->url);
-        // }else{
             $data=new Booking;
             $data->customer_id=$request->customer_id;
             $data->room_id=$request->room_id;
@@ -78,6 +48,11 @@ class BookingController extends Controller
                 $data->ref='admin';
             }
             $data->save();
+            $booking = Booking::find($data->id);
+            $customer = Customer::find($request->customer_id);
+            $roomtype = RoomType::find($request->room_id);
+          
+            $this->sendEmail($booking,$customer, $roomtype);
 
             if($request->ref=='front'){
                 return redirect('booking')->with('success','Successfully booking.');
@@ -85,7 +60,6 @@ class BookingController extends Controller
             }
             
             return redirect('admin/booking/create')->with('success','Data has been added.');
-        // }
         
     }
 
@@ -110,6 +84,25 @@ class BookingController extends Controller
         return redirect('admin/booking')->with('success','Data has been deleted.');
     }
 
+    public function execPostRequest($url, $data)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data))
+        );
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+     
+        $result = curl_exec($ch);
+       
+        curl_close($ch);
+        return $result; 
+    }
+
 
     // Check Avaiable rooms
     function available_rooms(Request $request,$checkin_date){
@@ -130,30 +123,93 @@ class BookingController extends Controller
         return view('front-booking',['roomTypes'=>$roomTypes]);
     }
 
-    // function booking_payment_success(Request $request){
-    //     \Stripe\Stripe::setApiKey('sk_test_51JKcB7SFjUWoS3CIIaPlxPSREpJYoyPsn5KIhj2CBCM9z23dRUreOUwFq6eXmRYmgXNfxSozplocikiAFe3aX7sK008OH0sqy6');
-    //     $session = \Stripe\Checkout\Session::retrieve($request->get('session_id'));
-    //     $customer = \Stripe\Customer::retrieve($session->customer);
-    //     if($session->payment_status=='paid'){
-    //         // dd(session('customer_id'));
-    //         $data=new Booking;
-    //         $data->customer_id=session('customer_id');
-    //         $data->room_id=session('room_id');
-    //         $data->checkin_date=session('checkin_date');
-    //         $data->checkout_date=session('checkout_date');
-    //         $data->total_adults=session('total_adults');
-    //         $data->total_children=session('total_children');
-    //         if(session('ref')=='front'){
-    //             $data->ref='front';
-    //         }else{
-    //             $data->ref='admin';
-    //         }
-    //         $data->save();
-    //         return view('booking.success');
-    //     }
-    // }
+    public function booking_payment(Request $request)
+    {      
+        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
-    // function booking_payment_fail(Request $request){
-    //     return view('booking.failure');
-    // }
+        $partnerCode = 'MOMOBKUN20180529';
+        $accessKey = 'klm05TvNBzhg7h7j';
+        $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+        $orderInfo = "Thanh toán qua ATM MoMo";
+        $amount = '100000';
+        $orderId = time() ."";
+        $redirectUrl = "http://localhost:8000/booking/success";
+        $ipnUrl = "http://localhost:8000/booking";
+        $extraData = "";
+        $requestId = time() . "";
+        $requestType = "payWithATM";
+
+        $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId 
+        . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+        $signature = hash_hmac("sha256", $rawHash,$secretKey);
+        //  dd($signature);
+        $data = array(
+            'partnerCode' => $partnerCode,
+            'partnerName' => "Test",
+            "storeId" => "MomoTestStore",
+            'requestId' => $requestId,
+            'amount' => $amount,
+            'orderId' => $orderId,
+            'orderInfo' => $orderInfo,
+            'redirectUrl' => $redirectUrl,
+            'ipnUrl' => $ipnUrl,
+            'lang' => 'vi',
+            'extraData' => $extraData,
+            'requestType' => $requestType,
+            'signature' => $signature);
+        
+        $result = $this->execPostRequest($endpoint, json_encode($data));
+        
+        $jsonResult = json_decode($result, true);  
+            if ($jsonResult['resultCode'] == 0) {
+                return redirect()->to($jsonResult['payUrl'])
+                ->with('booking_request', $request->all());
+            } else {
+                return view('booking.failure');
+            }
+    
+    }
+
+
+    function booking_payment_success(Request $request){
+        $bookingRequest = $request->session()->get('booking_request', $request->all());
+
+        $data = new Booking;
+        $data->customer_id = $bookingRequest['customer_id'];
+        $data->room_id = $bookingRequest['room_id'];
+        $data->checkin_date = $bookingRequest['checkin_date'];
+        $data->checkout_date = $bookingRequest['checkout_date'];
+        $data->total_adults = $bookingRequest['total_adults'];
+        $data->total_children = $bookingRequest['total_children'];
+        $data->ref = $bookingRequest['ref'] ;
+        $data->save();
+    
+        $booking = Booking::find($data->id);
+        $customer = Customer::find($bookingRequest['customer_id']);
+        $roomtype = RoomType::find($bookingRequest['room_id']);
+    
+        $this->sendEmail($booking, $customer, $roomtype);
+    
+        $request->session()->forget('booking_request');
+    
+        return view('booking.success');
+    }
+
+    function booking_payment_fail(Request $request){
+        return view('booking.failure');
+    }
+
+    private function sendEmail($booking,$customer,$roomtype)
+    {
+        // $email_to = $customer->email;
+        $email_to_name =$customer->full_name;
+
+        Mail::send('email',compact('booking','customer','roomtype'),function ($message) use(  $email_to_name ){
+            $message->from('blackwise1399@gmail.com' , 'Sona Hotel');
+            $message->to('minhlam3118410220@gmail.com' , $email_to_name);
+            $message->subject('Room Reservation');
+        });
+    }
+
+
 }

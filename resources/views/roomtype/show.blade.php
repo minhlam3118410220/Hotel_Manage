@@ -33,7 +33,7 @@
                                                     @foreach($data->roomtypeimgs as $key =>$img)
                                                    
                                                     <td class="imgcol{{$img->id}}">
-                                                        <img width="150" src="{{asset('storage/'.str_replace('public/', '',$img->img_src))}}" />
+                                                        <img width="150" src="{{asset('storage/'.str_replace('public/', '',$img->img_src))}}" alt="{{$img->img_alt}}"/>
                                                     </td>
                                                   
                                                     @endforeach

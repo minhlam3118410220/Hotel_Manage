@@ -184,7 +184,7 @@
                         @if(Session::has('success'))
                         <p class="text-success">{{session('success')}}</p>
                         @endif
-                        <form method="post" enctype="multipart/form-data" action="{{url('admin/booking')}}">
+                        <form method="post" enctype="multipart/form-data" action="{{url('/booking')}}">
                             <div class="check-date">
                                 @csrf
                                 <label>CheckIn Date </label>
@@ -198,10 +198,7 @@
                                 <label >Avaiable Rooms </label>
                                 <select class="nice-select room-list" name="room_id">
 
-                                </select>
-                                {{-- <br>
-                                <label>Price :<span class="show-room-price"> </span></label> --}}
-                            
+                                </select>         
                             </div>
                             <div class="check-date">
                                 <label>Total Adults </label>
@@ -218,7 +215,7 @@
                                 <input type="hidden" name="customer_id" value="{{session('data')[0]->id}}" />
                                 <input type="hidden" name="ref" value="front" />
                                 <input type="hidden" name="roomprice" class="room-price" value="" />
-                                <button type="submit">Room Book</button>
+                                <button type="submit" name="payUrl">Room Book</button>
                         </form>
                     </div>
                 </div>
@@ -335,7 +332,6 @@
     <!-- Search model end -->
    
 
-   
 
     <script src="vendor/jquery/jquery.min.js"></script>
 

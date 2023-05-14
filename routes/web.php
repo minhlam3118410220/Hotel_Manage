@@ -13,16 +13,6 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffDepartment;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
 // Admin Login
@@ -30,13 +20,15 @@ Route::get('admin/login',[AdminController::class,'login']);
 Route::post('admin/login',[AdminController::class,'check_login']);
 Route::get('admin/logout',[AdminController::class,'logout']);
 
+// Route::prefix('admin')->middleware('checkAdminLogin')->group(function (){
 Route::prefix('admin')->group(function (){
+
     // Admin Dashboard
     Route::get('/',[AdminController::class,'dashboard']);
 
     //Banner
-    Route::get('banner/{id}/delete',[BannerController::class,'destroy']);
-    Route::resource('banner',BannerController::class);
+    Route::get('/banner/{id}/delete',[BannerController::class,'destroy']);
+    Route::resource('/banner',BannerController::class);
 
     // RoomType Routes
     Route::get('/roomtype/{id}/delete',[RoomTypeController::class,'destroy']);
@@ -82,12 +74,16 @@ Route::prefix('admin')->group(function (){
     
 });
 
+
+
 Route::get('/',[HomeController::class,'home']);
 Route::get('about-us',[PageController::class,'about_us']);
 Route::get('contact',[PageController::class,'contact']);
 Route::get('blog',[PageController::class,'blog']);
 Route::get('booking',[BookingController::class,'front_booking']);
-// Route::post('save-contactus',[PageController::class,'save_contactus']);
+Route::post('booking',[BookingController::class,'booking_payment']);
+Route::get('booking/success',[BookingController::class,'booking_payment_success']);
+Route::get('booking/fail',[BookingController::class,'booking_payment_fail']);
 
 Route::get('room',[PageController::class,'room']);
 Route::get('room/{id}',[PageController::class,'room_details']);
@@ -97,8 +93,6 @@ Route::get('login',[CustomerController::class,'login']);
 Route::get('register',[CustomerController::class,'register']);
 Route::post('customer/login',[CustomerController::class,'customer_login']);
 Route::get('logout',[CustomerController::class,'logout']);
-
-
 
 // Testimonial
 Route::get('customer/add-testimonial',[HomeController::class,'add_testimonial']);

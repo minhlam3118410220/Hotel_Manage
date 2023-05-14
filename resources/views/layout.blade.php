@@ -36,6 +36,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
+        @if (session('adminData')->first()->level == 1)
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Dashboard -->
@@ -131,6 +132,7 @@
              <!-- Divider -->
              <hr class="sidebar-divider">
 
+          
              <!-- Heading -->
              <div class="sidebar-heading">
                 Staffs
@@ -168,6 +170,7 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+      
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -218,7 +221,163 @@
                 </div>
             </li>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
 
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        @endif
+        <!-- End of Sidebar -->
+
+        <!-- Sidebar -->
+        @if (session('adminData')->first()->level == 2)
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Dashboard -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3"> Admin Panel </div>
+            </a>
+            <hr class="sidebar-divider my-0">
+
+            <!--  Sidebar - Master -->
+            <li class="nav-item ">
+                <a class="nav-link" href="{{url('admin')}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+             <!-- Divider -->
+            <hr class="sidebar-divider">
+
+              <!-- Heading -->
+            <div class="sidebar-heading">
+               Rooms
+            </div>
+       
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Room Type</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/roomtype/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/roomtype')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-box"></i>
+                    <span>Room</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/rooms/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/rooms')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Customers
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustomer"
+                    aria-expanded="true" aria-controls="collapseCustomer">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Customer</span>
+                </a>
+                <div id="collapseCustomer" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/customer/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/customer')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustest"
+                    aria-expanded="true" aria-controls="collapseCustest">
+                    <i class="fas fa-fw fa-comment"></i>
+                    <span>Customer Testimonials</span>
+                </a>
+                <div id="collapseCustest" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/testimonials')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+             <!-- Divider -->
+             <hr class="sidebar-divider">
+      
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Activities
+            </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBooking"
+                    aria-expanded="true" aria-controls="collapseBooking">
+                    <i class="fas fa-fw fa-calendar-alt"></i>
+                    <span>Bookings</span>
+                </a>
+                <div id="collapseBooking" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/booking/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/booking')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseService"
+                    aria-expanded="true" aria-controls="collapseService">
+                    <i class="fas fa-fw fa-concierge-bell"></i>
+                    <span>Services</span>
+                </a>
+                <div id="collapseService" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/service/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/service')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBanner"
+                    aria-expanded="true" aria-controls="collapseBanner">
+                    <i class="fas fa-fw fa-image"></i>
+                    <span>Banner</span>
+                </a>
+                <div id="collapseBanner" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/banner/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/banner')}}">View All</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -229,6 +388,127 @@
             </div>
 
         </ul>
+        @endif
+        <!-- End of Sidebar -->
+
+        @if (session('adminData')->first()->level == 3)
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Dashboard -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3"> Admin Panel </div>
+            </a>
+            <hr class="sidebar-divider my-0">
+
+            <!--  Sidebar - Master -->
+            <li class="nav-item ">
+                <a class="nav-link" href="{{url('admin')}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+             <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Customers
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustomer"
+                    aria-expanded="true" aria-controls="collapseCustomer">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Customer</span>
+                </a>
+                <div id="collapseCustomer" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/customer/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/customer')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustest"
+                    aria-expanded="true" aria-controls="collapseCustest">
+                    <i class="fas fa-fw fa-comment"></i>
+                    <span>Customer Testimonials</span>
+                </a>
+                <div id="collapseCustest" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/testimonials')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+             <!-- Divider -->
+             <hr class="sidebar-divider">
+      
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Activities
+            </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBooking"
+                    aria-expanded="true" aria-controls="collapseBooking">
+                    <i class="fas fa-fw fa-calendar-alt"></i>
+                    <span>Bookings</span>
+                </a>
+                <div id="collapseBooking" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/booking/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/booking')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseService"
+                    aria-expanded="true" aria-controls="collapseService">
+                    <i class="fas fa-fw fa-concierge-bell"></i>
+                    <span>Services</span>
+                </a>
+                <div id="collapseService" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/service/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/service')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBanner"
+                    aria-expanded="true" aria-controls="collapseBanner">
+                    <i class="fas fa-fw fa-image"></i>
+                    <span>Banner</span>
+                </a>
+                <div id="collapseBanner" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/banner/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/banner')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        @endif
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->

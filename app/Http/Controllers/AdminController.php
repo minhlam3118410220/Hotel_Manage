@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-     // Login
-     function login(){
+    // Login
+    function login(){
         return view('login');
     }
 
@@ -28,6 +28,7 @@ class AdminController extends Controller
         if($admin>0){
             $adminData=Admin::where(['username'=>$request->username,'password'=>sha1($request->password)])
                             ->get();
+            
             session(['adminData'=>$adminData]);
 
             if($request->has('rememberme')){
@@ -42,7 +43,7 @@ class AdminController extends Controller
     }
 
     // Logout
-    function logout(){
+    public function logout(){
         session()->forget(['adminData']);
         return redirect('admin/login');
     }
@@ -74,6 +75,7 @@ class AdminController extends Controller
             $pdata[]=$rbooking->total_bookings;
         }
         // End
+        
 
         return view('dashboard',['labels'=>$labels,'data'=>$data,'plabels'=>$plabels,'pdata'=>$pdata]);
     }

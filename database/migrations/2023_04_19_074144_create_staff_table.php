@@ -17,7 +17,7 @@ class CreateStaffTable extends Migration
             $table->id();
             $table->string('full_name');
             $table->integer('department_id');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->text('bio');
             $table->string('salary_type');
             $table->string('salary_amt');
