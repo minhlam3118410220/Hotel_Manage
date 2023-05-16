@@ -28,7 +28,8 @@ class PageController extends Controller
          return view('blog');
      }
 
-    // Save Contact Us Form
+   
+     // Save Contact Us Form
     // function save_contactus(Request $request){
     //     $request->validate([
     //         'full_name'=>'required',
@@ -101,7 +102,6 @@ class PageController extends Controller
 
         return redirect()->back();
     }
-
 
     public function reservation($id)
     {
