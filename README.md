@@ -7,17 +7,17 @@
 - Responsive Layout
 - Booking Room
 - Room attributes: price, size...
-- Blog: category, tag, content, web page 
+- Blog: category, tag, content,...
 - Upload manager: banner, images,..
 - Newsletter management
-- Contact forms with the real-time notification (Laravel Pusher)
 - Recommendations room
-- Laravel Socialite implement(Facebook, Google & twitter) & Customer login
+- Laravel Socialite implement(Facebook, Google & twitter) 
 - Product Share and follow from different social platform...
-- Login/Logout Users
-- Register Users
+- Customer Login/Logout 
+- Register 
 - Online Payment (Momo)
 - Email booking confirmation
+Many more....
 
 ## ======= ADMIN =======
 
@@ -44,6 +44,7 @@ Many more....
 - Add Testimonial
 - Reservation Managememt
 - Profile Setting
+- Change Password
 
 ### Set up :
 
