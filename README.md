@@ -43,8 +43,8 @@ Many more....
 ## ======= USER =======
 
 - Add Testimonial
-- Reservation room
-- Profile Settings
+- Reservation Managememt
+- Profile Setting
 
 ### Set up :
 
