@@ -6,34 +6,33 @@
 
 - Responsive Layout
 - Booking Room
-- Room attributes: cost price, stock, size...
+- Room attributes: price, size...
 - Blog: category, tag, content, web page 
-- Module/Extension: Shipping, payment, discount, ...
 - Upload manager: banner, images,..
 - Newsletter management
 - Contact forms with the real-time notification (Laravel Pusher)
-- Related Products, Recommendations for you in our categories
+- Recommendations room
 - Laravel Socialite implement(Facebook, Google & twitter) & Customer login
 - Product Share and follow from different social platform...
+- Login/Logout Users
+- Register Users
 - Online Payment (Momo)
 - Email booking confirmation
-- Order Tracking 
-- Multi-level comment system
-
 
 ## ======= ADMIN =======
 
 - Admin roles, permission
-- Product manager
 - Banner manager
 - Booking management
 - Room management
+- Service management
 - Room Type management
+- Room Type Image management
 - Staff Management
+- Department Management
 - Customer Management
 - Blog manager
-- User Management
-- Coupon Management
+- Customer Testimonial Management
 - Line Chart & Pie chart ...
 - Profile Settings
 - Decentralize admin, management, staff
