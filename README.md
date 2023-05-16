@@ -66,13 +66,35 @@ Many more....
 <p style="text-align:center">Thank You so much for your time !!!</p>
 
 
-### Admin :
+### Frontend :
+
+![FE](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/fe1.jpg)
+
+![FE](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/fe2.jpg)
+
+![FE](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/fe3.jpg)
+
+![FE](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/fe4.jpg)
+
+![FE](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/cus1.jpg)
+
+![FE](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/cus2.jpg)
+
+![FE](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/cus3.jpg)
+
+![FE](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/cus4.jpg)
+
+![FE](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/sendmail.jpg)
+
+
+### Backend (Admin Pannel) :
 
 ![admin](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/admin1.jpg)
 
 ![admin](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/admin2.jpg)
 
 ![admin](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/admin3.jpg)
+
 
 
 
