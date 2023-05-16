@@ -14,7 +14,7 @@
 - Recommendations room
 - Laravel Socialite implement(Facebook, Google & twitter) & Customer login
 - Product Share and follow from different social platform...
-- - Login/Logout Users
+- Login/Logout Users
 - Register Users
 - Online Payment (Momo)
 - Email booking confirmation
