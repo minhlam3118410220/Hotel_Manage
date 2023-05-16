@@ -23,6 +23,7 @@ class CreateBookingsTable extends Migration
             $table->string('total_children');
             $table->string('ref');
             $table->string('total')->nullable();
+            $table->string('payment_type')->default('cod');
             $table->timestamps();
         });
     }

@@ -548,6 +548,22 @@ ul, ol {
 	font-weight: 500;
 	padding-left: 20px;
 }
+.booking-form form .check-box {
+	position: relative;
+	
+	display: inline;
+  justify-content: center;
+}
+.booking-form form .check-box label {
+	font-size: 14px;
+	color: #707079;
+	display: block;
+	margin-bottom: 10px;
+	display: inline;
+}
+
+
+
 .booking-form form .check-date i {
 	color: #dfa974;
 	position: absolute;

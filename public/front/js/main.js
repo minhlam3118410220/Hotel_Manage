@@ -115,6 +115,9 @@
           return parts.join(dec_point);
         }
       });
+
+
+    
    
 
 })(jQuery);

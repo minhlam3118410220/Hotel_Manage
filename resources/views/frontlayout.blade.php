@@ -146,6 +146,7 @@
                                         <ul class="dropdown">
                                             <li><a href="{{url('customer/'.session('data')[0]->id)}}">Profile</a></li>
                                             <li><a href="{{url('customer/add-testimonial')}}">Testimonial</a></li>
+                                            <li><a href="{{url('booking/customer/'.session('data')[0]->id)}}">Reservation</a></li>
                                         </ul>
                                     </li>
                                     @endif

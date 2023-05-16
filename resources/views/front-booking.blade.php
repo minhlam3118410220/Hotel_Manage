@@ -143,6 +143,7 @@
                                         <ul class="dropdown">
                                             <li><a href="{{url('customer/'.session('data')[0]->id)}}">Profile</a></li>
                                             <li><a href="{{url('customer/add-testimonial')}}">Testimonial</a></li>
+                                            <li><a href="{{url('booking/customer/'.session('data')[0]->id)}}">Reservation</a></li>
                                         </ul>
                                     </li>
                                     @endif
@@ -180,11 +181,10 @@
                                     <p class="text-danger">{{$error}}</p>
                                 @endforeach
                         @endif
-
                         @if(Session::has('success'))
                         <p class="text-success">{{session('success')}}</p>
                         @endif
-                        <form method="post" enctype="multipart/form-data" action="{{url('/booking')}}">
+                        <form method="post" enctype="multipart/form-data" id="paymentForm" >
                             <div class="check-date">
                                 @csrf
                                 <label>CheckIn Date </label>
@@ -211,8 +211,21 @@
                             <div  class="check-date">
                                 <label>Price : <span class="show-room-price"></span> </label>
                             </div>
-                            
-                                <input type="hidden" name="customer_id" value="{{session('data')[0]->id}}" />
+                            <div class="check-box" >       
+                                <input type="checkbox"  name="payment_type" value="cod" onclick="changeFormAction(this)" >
+                                <label> Cod</label>                                                                  
+                            </div>
+                            <br>
+                            <div class="check-box" >       
+                                <input type="checkbox"  name="payment_type" value="momo" onclick="changeFormAction(this)">
+                                <label> Momo </label>                                                                  
+                            </div>
+                           
+                                @php
+                                    $customer_id = session('data')[0]->id ?? null;
+                                @endphp
+                                {{-- <input type="hidden" name="customer_id" value="{{session('data')[0]->id}}" /> --}}
+                                <input type="hidden" name="customer_id" value="{{$customer_id}}" />
                                 <input type="hidden" name="ref" value="front" />
                                 <input type="hidden" name="roomprice" class="room-price" value="" />
                                 <button type="submit" name="payUrl">Room Book</button>
@@ -330,8 +343,6 @@
         </div>
     </div>
     <!-- Search model end -->
-   
-
 
     <script src="vendor/jquery/jquery.min.js"></script>
 
@@ -367,6 +378,30 @@
             });
     
         });
+
+        $(document).ready(function() {
+            $('#paymentForm').on('submit', function(event) {
+                if (!$('input[name="payment_type"]').is(':checked')) {
+                    event.preventDefault();
+                    alert('Vui lòng chọn phương thức thanh toán!');
+                }
+            });
+        });
+
+        function changeFormAction(checkbox) {
+            var form = document.getElementById("paymentForm");
+            var actionURL = "";
+
+            if (checkbox.value === "cod") {
+                actionURL = "{{url('admin/booking')}}";
+            } else if (checkbox.value === "momo") {
+                actionURL = "{{url('/booking')}}";
+            }
+
+            form.action = actionURL;
+        }
+
+
     </script>
 
 </body>

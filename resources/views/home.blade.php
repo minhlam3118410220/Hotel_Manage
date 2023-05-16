@@ -39,7 +39,7 @@
                             Interior spaces start your journey through local culture with collections of artwork, literature and artifacts. 
                             Each tells a captivating story about the locale, providing historic context with fascinating tidbits of information. 
                             More than a hotel, Sona Hotel Saigon is a work of art in itself, every nook lovingly embellished with pieces that connect to the greater story.</p>
-                        <a href="#" class="primary-btn about-btn">Read More</a>
+                        <a href="/about-us" class="primary-btn about-btn">Read More</a>
                     </div>
                 </div>
                 <div class="col-lg-6">

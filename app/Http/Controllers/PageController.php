@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Customer;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
@@ -98,6 +99,22 @@ class PageController extends Controller
         $data->photo=$imgPath;
         $data->save();
 
+        return redirect()->back();
+    }
+
+
+    public function reservation($id)
+    {
+        $data=Booking::where(['customer_id'=>$id])->get();
+      
+        return view('customer.booking',['data'=>$data]);     
+    }
+
+    public function delete_reservation($id,$booking_id)
+    {
+        Booking::where('customer_id', $id)
+                ->where('id', $booking_id)
+                ->delete();
         return redirect()->back();
     }
 }
