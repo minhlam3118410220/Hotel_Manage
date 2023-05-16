@@ -66,11 +66,13 @@ Many more....
 <p style="text-align:center">Thank You so much for your time !!!</p>
 
 
-### Screenshots :
-#Admin 
-##Admin
+### Admin :
 
 ![admin](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/admin1.jpg)
+
+![admin](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/admin2.jpg)
+
+![admin](https://github.com/minhlam3118410220/Hotel_Manage/blob/main/screenshot/admin3.jpg)
 
 
 
